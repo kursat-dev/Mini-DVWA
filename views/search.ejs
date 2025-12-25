@@ -1,0 +1,24 @@
+<%- include('partials/header') %>
+
+    <div class="card">
+        <h2>Search (XSS Demo)</h2>
+        <p style="margin-bottom: 1rem; opacity: 0.7;">Hint: Try searching for
+            <code>&lt;script&gt;alert(1)&lt;/script&gt;</code></p>
+
+        <form action="/search" method="GET">
+            <div style="display: flex; gap: 10px;">
+                <input type="text" name="q" placeholder="Search..."
+                    value="<%= typeof query !== 'undefined' ? query : '' %>">
+                <button type="submit" class="btn" style="height: 38px;">Search</button>
+            </div>
+        </form>
+
+        <% if (typeof query !=='undefined' && query) { %>
+            <div style="margin-top: 2rem;">
+                <h3>Results for: <%- query %></h3>
+                <p>No results found.</p>
+            </div>
+            <% } %>
+    </div>
+
+    <%- include('partials/footer') %>

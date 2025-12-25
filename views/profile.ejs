@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+    <div class="card">
+        <h2>User Profile (IDOR Demo)</h2>
+        <p style="margin-bottom: 1rem; opacity: 0.7;">Hint: Change the <code>id</code> parameter in the URL to view
+            other users (e.g., <code>?id=1</code>).</p>
+
+        <% if (typeof profile !=='undefined' && profile) { %>
+            <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 8px;">
+                <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">
+                    <strong>Username:</strong>
+                    <%= profile.username %>
+                </div>
+                <div style="margin-bottom: 0.5rem;">
+                    <strong>Role:</strong>
+                    <%= profile.bio %>
+                </div>
+                <div>
+                    <strong>Balance:</strong> $<%= profile.balance %>
+                </div>
+            </div>
+            <% } else { %>
+                <p>User not found.</p>
+                <% } %>
+    </div>
+
+    <%- include('partials/footer') %>

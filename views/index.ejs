@@ -1,0 +1,56 @@
+<%- include('partials/header') %>
+
+    <div class="card">
+        <h2>Welcome to Mini-DVWA</h2>
+        <p>This application is deliberately vulnerable. Use the navigation links above or the cards below to explore
+            different security flaws.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        <!-- SQL Injection -->
+        <div class="card">
+            <h3><span class="vulnerability-badge vuln-sqli">Critical</span> Login / SQL Injection</h3>
+            <p>Attempt to bypass authentication using SQL injection techniques.</p>
+            <div style="margin-top: 1rem;">
+                <a href="/login" class="btn">Go to Login</a>
+            </div>
+        </div>
+
+        <!-- XSS -->
+        <div class="card">
+            <h3><span class="vulnerability-badge vuln-xss">High</span> Search / XSS</h3>
+            <p>Test for Reflected Cross-Site Scripting vulnerabilities in the search bar.</p>
+            <div style="margin-top: 1rem;">
+                <a href="/search" class="btn">Go to Search</a>
+            </div>
+        </div>
+
+        <!-- IDOR -->
+        <div class="card">
+            <h3><span class="vulnerability-badge vuln-idor">High</span> Profile / IDOR</h3>
+            <p>Try to access other users' profiles by manipulating the ID parameter.</p>
+            <div style="margin-top: 1rem;">
+                <a href="/profile?id=2" class="btn">Go to Profile</a>
+            </div>
+        </div>
+
+        <!-- CSRF -->
+        <div class="card">
+            <h3><span class="vulnerability-badge vuln-csrf">Medium</span> Transfer / CSRF</h3>
+            <p>Perform unwanted actions (funds transfer) without the user's consent.</p>
+            <div style="margin-top: 1rem;">
+                <a href="/transfer" class="btn">Go to Transfer</a>
+            </div>
+        </div>
+
+        <!-- Auth Bypass -->
+        <div class="card">
+            <h3><span class="vulnerability-badge vuln-sqli">Critical</span> Admin / Auth Bypass</h3>
+            <p>Try to access the administrative panel without proper credentials.</p>
+            <div style="margin-top: 1rem;">
+                <a href="/admin" class="btn">Go to Admin</a>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>

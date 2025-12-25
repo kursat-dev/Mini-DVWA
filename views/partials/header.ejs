@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-DVWA</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h1>☠️ Mini-DVWA</h1>
+                <% if (typeof user !== 'undefined' && user) { %>
+                    <div>
+                        <span>Logged in as <strong><%= user.username %></strong></span>
+                        <span style="margin: 0 10px; opacity: 0.5;">|</span>
+                        <a href="/logout" class="btn btn-danger" style="padding: 4px 10px; font-size: 12px;">Logout</a>
+                    </div>
+                <% } else { %>
+                    <a href="/login" class="btn">Login</a>
+                <% } %>
+            </div>
+            <nav class="nav">
+                <a href="/" class="nav-link">Dashboard</a>
+                <% if (typeof user !== 'undefined' && user) { %>
+                    <a href="/profile?id=<%= user.id %>" class="nav-link">Profile (IDOR)</a>
+                    <a href="/transfer" class="nav-link">Transfer (CSRF)</a>
+                    <a href="/search" class="nav-link">Search (XSS)</a>
+                    <a href="/admin" class="nav-link">Admin</a>
+                <% } else { %>
+                    <a href="/login" class="nav-link">Login (SQLi)</a>
+                <% } %>
+            </nav>
+        </header>
+        <main>

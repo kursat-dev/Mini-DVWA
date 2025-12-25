@@ -1,0 +1,26 @@
+<%- include('partials/header') %>
+
+    <div class="card" style="max-width: 400px; margin: 0 auto;">
+        <h2>Login</h2>
+        <p style="margin-bottom: 1rem; opacity: 0.7;">Hint: Admin user is 'admin'. Try <code>' OR '1'='1</code></p>
+
+        <% if (error) { %>
+            <div class="alert alert-error">
+                <%= error %>
+            </div>
+            <% } %>
+
+                <form action="/login" method="POST">
+                    <div style="margin-bottom: 1rem;">
+                        <label for="username" style="display: block; margin-bottom: 0.5rem;">Username</label>
+                        <input type="text" id="username" name="username" placeholder="admin">
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label for="password" style="display: block; margin-bottom: 0.5rem;">Password</label>
+                        <input type="password" id="password" name="password" placeholder="••••••">
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+    </div>
+
+    <%- include('partials/footer') %>

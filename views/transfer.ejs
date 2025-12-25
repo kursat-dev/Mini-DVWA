@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+
+    <div class="card">
+        <h2>Transfer Funds (CSRF Demo)</h2>
+        <p style="margin-bottom: 1rem; opacity: 0.7;">Hint: This form has no CSRF token. An attacker can construct a
+            hidden form on another site to submit this request.</p>
+
+        <% if (message) { %>
+            <div class="alert alert-success">
+                <%= message %>
+            </div>
+            <% } %>
+
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                    <strong>Your Current Balance:</strong> $<%= user.balance %>
+                </div>
+
+                <form action="/transfer" method="POST">
+                    <div style="margin-bottom: 1rem;">
+                        <label for="to_user" style="display: block; margin-bottom: 0.5rem;">Recipient Username</label>
+                        <input type="text" id="to_user" name="to_user" placeholder="bob">
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label for="amount" style="display: block; margin-bottom: 0.5rem;">Amount</label>
+                        <input type="number" id="amount" name="amount" placeholder="100">
+                    </div>
+                    <button type="submit" class="btn">Transfer Funds</button>
+                </form>
+    </div>
+
+    <%- include('partials/footer') %>

@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+
+    <div class="card">
+        <h2>Admin Panel (Auth Bypass Demo)</h2>
+        <p style="margin-bottom: 1rem; opacity: 0.7;">Hint: Check your cookies. Try adding a cookie
+            <code>role=admin</code>.</p>
+
+        <% if (message.includes('Access Denied')) { %>
+            <div class="alert alert-error">
+                <h3>⛔ <%= message %>
+                </h3>
+            </div>
+            <% } else { %>
+                <div class="alert alert-success">
+                    <h3>✅ <%= message %>
+                    </h3>
+                    <p>You have successfully bypassed the authentication check!</p>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <h3>Admin Controls</h3>
+                    <ul>
+                        <li>[DELETE] All Users</li>
+                        <li>[RESET] System</li>
+                        <li>[VIEW] Audit Logs</li>
+                    </ul>
+                </div>
+                <% } %>
+    </div>
+
+    <%- include('partials/footer') %>
