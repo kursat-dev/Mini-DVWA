@@ -45,6 +45,12 @@ app.get('/', (req, res) => {
     res.render('index', { user: req.user });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+// For Vercel, we export the app
+// If running locally, listen on port
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;
